@@ -54,7 +54,7 @@ export default class Bingo {
     // let card = new Card(this.cards[i]);
     // render the card
     // card.render();
-    for (let i = 0; i < this.cards.length; i++) {
+    for (var i = 0; i < this.cards.length; i++) {
       let card = new Card(this.cards[i]);
       card.render(i);
     }
@@ -72,7 +72,7 @@ export default class Bingo {
     // document.querySelector(".bingo__overlay").style.display = "block";
     // }
     let cardsDone = document.querySelectorAll(".bingo__card--done");
-    if (cardsDone.length === 5) {
+    if (cardsDone.length === 6) {
       document.querySelector(".bingo__overlay").style.display = "block";
     }
   }
@@ -85,7 +85,15 @@ export default class Bingo {
     let cardsWon = [];
     console.log("Saving bingo to localstorage");
     // let cards = document.querySelectorAll(".bingo__card--done");
-    let cards = document.querySelectorAll(".bingo__card");
+    let cards = document.querySelectorAll(".bingo__card--done");
+
+    // save a selection like [1, 7, 8] to localstorage item "bingo"
+    // you might want to check out how JSON.stringify() works
+    for (let i = 0; i < cards.length; i++) {
+      cardsWon.push(cards[i].dataset.number);
+      
+    }
+    localStorage.setItem("bingo", JSON.stringify(cardsWon));
 
     // if there are not done cards, remove localstorage
     // if (cards.length === 0) {
@@ -95,17 +103,6 @@ export default class Bingo {
       localStorage.removeItem("bingo");
     }
 
-    // save a selection like [1, 7, 8] to localstorage item "bingo"
-    // you might want to check out how JSON.stringify() works
-    for (let i = 0; i < cards.length; i++) {
-      if (cards[i].classList.contains("bingo__card--done")) {
-        cardsWon.push(i);
-      }
-    }
-    localStorage.setItem("bingo", JSON.stringify(cardsWon));
-  
-    let bingo = JSON.stringify(cardsWon);
-    localStorage.setItem("bingo", bingo);
   }
 
   static load() {
@@ -115,13 +112,6 @@ export default class Bingo {
     // load the saved string from localstorage and parse it as an array, then loop over it
     console.log("loading bingo selection from localstorage");
 
-    let bingo = localStorage.getItem("bingo");
-    let bingoArray = JSON.parse(bingo);
-    for (let i = 0; i < bingoArray.length; i++) {
-      let card = document.querySelector(`.bingo__card[data-id="${bingoArray[i]}"]`);
-      card.classList.add("bingo__card--done");
-    }
-
     // check if localstorage item exists
     if (localStorage.getItem("bingo")) {
       // let cardsWon = JSON.parse();
@@ -130,7 +120,7 @@ export default class Bingo {
       // .bingo__card--done
       let cardsWon = JSON.parse(localStorage.getItem("bingo"));
       for (let i = 0; i < cardsWon.length; i++) {
-        let card = document.querySelector(`.bingo__card[data-id="${cardsWon[i]}"]`);
+        let card = document.querySelector(`[data-number="${cardsWon[i]}"]`);
         card.classList.add("bingo__card--done");
       }
     }

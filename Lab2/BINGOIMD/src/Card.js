@@ -30,7 +30,6 @@ export default class Card {
     card.classList.add("bingo__card");
     card.setAttribute('id', `bingo__card`+ counter);
     card.innerHTML = `${this.title}`;
-    // card.addEventListener("click", this.markDone);
     document.querySelector(".bingo__board").appendChild(card);
 
     // 🔥🔥🔥 TODO4: when we click an item, we want to check for winners and we want to save the selection to storage
