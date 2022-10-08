@@ -3,6 +3,7 @@
 # Human Bingo
 
 repository https://github.com/florianne-denys/DEV5-myportfolio/tree/main/Lab2/BINGOIMD
+
 codesandbox https://codesandbox.io/s/bingoimd-h7zjlg
 
 # ES2017 - Padding a string
