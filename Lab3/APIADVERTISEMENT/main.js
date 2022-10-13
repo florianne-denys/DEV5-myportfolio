@@ -1,2 +1,2 @@
 import Weather from './src/Weather.js';
-const weather = new Weather('99f6c06ad6414d7fb2070311220510');
+const weather = new Weather('80433573c361912360c10aa4ddf6320d');
