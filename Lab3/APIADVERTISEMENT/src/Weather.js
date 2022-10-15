@@ -14,7 +14,7 @@ export default class Weather {
       }
   
   
-      this.getLocation();
+      // this.getLocation();
     }
   
     getLocation() {
