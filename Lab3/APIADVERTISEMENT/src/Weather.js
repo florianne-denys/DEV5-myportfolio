@@ -45,7 +45,7 @@ export default class Weather {
     }
   
       displayWeather(data){
-        console.log(data)
+          // console.log(data)
           const temp = data.main.temp;
           document.querySelector(".weather__temp").innerText = temp + "°C";
   

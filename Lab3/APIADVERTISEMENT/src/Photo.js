@@ -1,7 +1,14 @@
 export default class Photo {
     constructor(api_key) {
         this.apiKey = api_key;
-        this.getPhoto();
+        // check if there is data in local storage
+        if (localStorage.getItem("photo") && Date.now()-localStorage.getItem("timestamp") < 600000) {
+            const photo = JSON.parse(localStorage.getItem("photo"));
+            this.displayPhoto(photo);
+            console.log("cache");
+        }else{
+            this.getPhoto();
+        }
 
     }
 
@@ -23,7 +30,8 @@ export default class Photo {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data.photos);
+                localStorage.setItem("photo", JSON.stringify(data.photos));
+                localStorage.setItem("timestamp", Date.now());
                 this.displayPhoto(data.photos);
             });
     }
