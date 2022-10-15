@@ -3,7 +3,6 @@ export default class Weather {
       this.apiKey = api_key;
   
       // check if there is data in local storage
-      
       // check if timestamp is older than 10 minutes
       if (localStorage.getItem("weather") && Date.now()-localStorage.getItem("timestamp") < 600000) {
           const weatherData = JSON.parse(localStorage.getItem("weather"));
@@ -15,7 +14,7 @@ export default class Weather {
       }
   
   
-      this.getLocation();
+      // this.getLocation();
     }
   
     getLocation() {
@@ -31,8 +30,8 @@ export default class Weather {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
   
-      const url = `http://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${lat},${lon}`
-  
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`
+    
       fetch(url)
           .then(response => response.json())
           .then(data => {
@@ -46,24 +45,22 @@ export default class Weather {
     }
   
       displayWeather(data){
-          const temp = data.current.temp_c;
+          // console.log(data)
+          const temp = data.main.temp;
           document.querySelector(".weather__temp").innerText = temp + "°C";
   
-          const weather = data.current.condition.text;
+          const weather = data.weather[0].main;
           document.querySelector(".weather__summary").innerText = weather;
+
+          const description = data.weather[0].description;
+          document.querySelector(".weather__subsummary").innerText = description;
   
-          const icon = data.current.condition.icon;
-          //create an image element
+          const icon = data.weather[0].icon;
           const img = document.createElement("img");
-          img.src = icon;
+          img.src = "http://openweathermap.org/img/w/" + icon + ".png";
           document.querySelector(".weather__icon").appendChild(img);
   
       }
       
     }
   
-  
-    // Change weather location
-  //   changeLocation(city) {
-  //     this.city = city;
-  //   }
