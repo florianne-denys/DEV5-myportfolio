@@ -17,8 +17,14 @@ export default class Photo {
             .then(response => response.json())
             .then(data => {
                 console.log(data.photos);
-                
+                this.displayPhoto(data.photos);
             });
+    }
+
+    displayPhoto(data) {
+        const img = document.createElement("img");
+        img.src = data[0].src.medium;
+        document.querySelector(".photo").appendChild(img);
     }
 
     
