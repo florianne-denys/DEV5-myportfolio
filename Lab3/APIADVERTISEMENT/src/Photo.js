@@ -6,8 +6,15 @@ export default class Photo {
     }
 
     getPhoto() {
-        const query = "nature";
-
+        let query = "weather";
+        //get weather from localstorage
+        if (localStorage.getItem("weather") && Date.now()-localStorage.getItem("timestamp") < 600000) {
+            const queryData = JSON.parse(localStorage.getItem("weather"));
+            query = queryData.weather[0].main;
+        }else{
+            query = "weather";
+        }
+        
         const url = `https://api.pexels.com/v1/search?query=${query}&per_page=1&page=1`;
         fetch(url, {
             headers: {
