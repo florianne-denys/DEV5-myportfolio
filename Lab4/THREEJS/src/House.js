@@ -21,6 +21,15 @@ export default class House{
         this.group.add( side1 );
         side1.position.z = -2;
         
+        //cilinder
+        const cilinderGeometry = new THREE.CylinderGeometry( 8, 8, 0.5, 32 );
+        const cilinderMaterial = new THREE.MeshStandardMaterial( {
+            color: 0x03C04A,
+        } );
+        const cilinder = new THREE.Mesh( cilinderGeometry, cilinderMaterial );
+        this.group.add( cilinder );
+        cilinder.position.y = -2.5;
+        
 
 
         //leftside
