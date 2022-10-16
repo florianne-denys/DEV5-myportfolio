@@ -52,12 +52,15 @@ const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
 scene.add( sphere );
 
 //stars
+const gltfLoader = new GLTFLoader();
 const addStar = (x, y, z, s) => {
-	const starGeometry = new THREE.SphereGeometry( s, 16, 8 );
-	const starMaterial = new THREE.MeshBasicMaterial( { color: 0xffffc2 } );
-	const star = new THREE.Mesh( starGeometry, starMaterial );
-	star.position.set(x, y, z);
-	scene.add(star);
+	let star;
+	gltfLoader.load('/assets/models/gold_star/scene.gltf', (gltf) => {
+		star = gltf.scene;
+		star.position.set(x, y, z);
+		star.scale.set(s, s, s);
+		scene.add(star);
+	});
 }
 for(let i = 0; i < 200; i++) {
 	let sign = Math.random() < 0.5 ? 1 : -1;
@@ -66,14 +69,13 @@ for(let i = 0; i < 200; i++) {
 	let y = Math.random() * 100 * sign;
 	sign = Math.random() < 0.5 ? 1 : -1;
 	let z = Math.random() * 100 * sign;
-	let s = Math.random() * 0.8;
+	let s = Math.random() * 5;
 	addStar(x, y, z, s);
 }
 //garden
 let garden;
-const gltfLoader = new GLTFLoader();
 gltfLoader.load('/assets/models/pond/scene.gltf', (gltf) => {
-garden = gltf.scene;
+	garden = gltf.scene;
 	garden.position.set(4, -2.5, 5);
 	garden.rotateY(Math.PI / -1.5);
 	garden.scale.set(0.01, 0.01, 0.01);
@@ -81,7 +83,6 @@ garden = gltf.scene;
 });
 
 //duck
-
 let cube;
 const cubeGeometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
 const cubeMaterial = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
