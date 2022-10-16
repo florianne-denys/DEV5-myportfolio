@@ -16,24 +16,30 @@ document.body.appendChild( renderer.domElement );
 const controls = new OrbitControls( camera, renderer.domElement );
 
 //light 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.PointLight(0xffffff, 0.5);
 scene.add(ambientLight);
 //add light in house
-const addLight = (x, y, z) => {
-	const light = new THREE.PointLight(0xffffff, 0.5);
-	light.position.set(x, y, z);
-	scene.add(light);
-}
-addLight(0, 5, 0);
-
+const light = new THREE.PointLight(0xffffff, 0.5);
+light.position.set(3, 5, 3);
+scene.add(light);
 //add directional light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-directionalLight.position.set(1, 2, 1);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight.position.set(2, 2, 1);
 scene.add(directionalLight);
 
 // add house
 const house = new House();
 scene.add(house.group);
+
+//add plane
+const planeGeometry = new THREE.PlaneGeometry( 2.3, 2.5 );
+const planeMaterial = new THREE.MeshStandardMaterial( { 
+	color: 0xffffff,
+	map: new THREE.TextureLoader().load( './public/assets/textures/me.jpg' ),
+ } );
+const plane = new THREE.Mesh( planeGeometry, planeMaterial );
+plane.position.set(0, 0, -1.8);
+scene.add( plane );
 
 //add sphere 
 const sphereGeometry = new THREE.SphereGeometry( 100, 32, 32 );
@@ -46,12 +52,15 @@ const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
 scene.add( sphere );
 
 //stars
+const gltfLoader = new GLTFLoader();
 const addStar = (x, y, z, s) => {
-	const starGeometry = new THREE.SphereGeometry( s, 16, 8 );
-	const starMaterial = new THREE.MeshBasicMaterial( { color: 0xffffc2 } );
-	const star = new THREE.Mesh( starGeometry, starMaterial );
-	star.position.set(x, y, z);
-	scene.add(star);
+	let star;
+	gltfLoader.load('/assets/models/gold_star/scene.gltf', (gltf) => {
+		star = gltf.scene;
+		star.position.set(x, y, z);
+		star.scale.set(s, s, s);
+		scene.add(star);
+	});
 }
 for(let i = 0; i < 200; i++) {
 	let sign = Math.random() < 0.5 ? 1 : -1;
@@ -60,14 +69,13 @@ for(let i = 0; i < 200; i++) {
 	let y = Math.random() * 100 * sign;
 	sign = Math.random() < 0.5 ? 1 : -1;
 	let z = Math.random() * 100 * sign;
-	let s = Math.random() * 0.8;
+	let s = Math.random() * 5;
 	addStar(x, y, z, s);
 }
 //garden
 let garden;
-const gltfLoader = new GLTFLoader();
 gltfLoader.load('/assets/models/pond/scene.gltf', (gltf) => {
-garden = gltf.scene;
+	garden = gltf.scene;
 	garden.position.set(4, -2.5, 5);
 	garden.rotateY(Math.PI / -1.5);
 	garden.scale.set(0.01, 0.01, 0.01);
@@ -75,7 +83,6 @@ garden = gltf.scene;
 });
 
 //duck
-
 let cube;
 const cubeGeometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
 const cubeMaterial = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
@@ -90,7 +97,11 @@ gltfLoader.load('/assets/models/duck/scene.gltf', (gltf) => {
     cube.add(duck);
 });
 
-camera.position.z = 10;
+camera.position.z = 18;
+camera.position.y = 2;
+camera.position.x = 0;
+camera.rotateY(-0.2);
+
 
 function animate() {
   requestAnimationFrame( animate );
