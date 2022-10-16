@@ -6,7 +6,6 @@ import House from './src/House';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-camera.position.z = 10;
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -44,6 +43,27 @@ const sphereMaterial = new THREE.MeshLambertMaterial( {
 } );
 const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
 scene.add( sphere );
+
+//stars
+const addStar = (x, y, z, s) => {
+	const starGeometry = new THREE.SphereGeometry( s, 16, 8 );
+	const starMaterial = new THREE.MeshBasicMaterial( { color: 0xffffc2 } );
+	const star = new THREE.Mesh( starGeometry, starMaterial );
+	star.position.set(x, y, z);
+	scene.add(star);
+}
+for(let i = 0; i < 200; i++) {
+	let sign = Math.random() < 0.5 ? 1 : -1;
+	let x = Math.random() * 100 * sign;
+	sign = Math.random() < 0.5 ? 1 : -1;
+	let y = Math.random() * 100 * sign;
+	sign = Math.random() < 0.5 ? 1 : -1;
+	let z = Math.random() * 100 * sign;
+	let s = Math.random() * 0.8;
+	addStar(x, y, z, s);
+  }
+  
+camera.position.z = 10;
 
 function animate() {
   requestAnimationFrame( animate );
