@@ -75,17 +75,27 @@ garden = gltf.scene;
 });
 
 //duck
+
+let cube;
+const cubeGeometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
+const cubeMaterial = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
+cube.position.set(5.3, -3, 5.4);
+scene.add( cube );
 let duck;
 gltfLoader.load('/assets/models/duck/scene.gltf', (gltf) => {
   duck = gltf.scene;
-    duck.position.set(7, -3, 5);
-    scene.add(duck);
+    duck.position.set(0.8, 0, 1);
+	duck.rotateY(Math.PI / 1.5);
+    cube.add(duck);
 });
 
 camera.position.z = 10;
 
 function animate() {
   requestAnimationFrame( animate );
+
+  cube.rotation.y += 0.01;
 
   renderer.render( scene, camera );
 };
