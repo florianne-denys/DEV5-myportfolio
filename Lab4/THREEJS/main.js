@@ -16,7 +16,7 @@ document.body.appendChild( renderer.domElement );
 const controls = new OrbitControls( camera, renderer.domElement );
 
 //light 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.PointLight(0xffffff, 0.5);
 scene.add(ambientLight);
 //add light in house
 const light = new THREE.PointLight(0xffffff, 0.5);
