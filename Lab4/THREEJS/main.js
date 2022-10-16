@@ -19,16 +19,12 @@ const controls = new OrbitControls( camera, renderer.domElement );
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 //add light in house
-const addLight = (x, y, z) => {
-	const light = new THREE.PointLight(0xffffff, 0.5);
-	light.position.set(x, y, z);
-	scene.add(light);
-}
-addLight(0, 5, 0);
-
+const light = new THREE.PointLight(0xffffff, 0.5);
+light.position.set(3, 5, 3);
+scene.add(light);
 //add directional light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-directionalLight.position.set(1, 2, 1);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight.position.set(2, 2, 1);
 scene.add(directionalLight);
 
 // add house
@@ -100,7 +96,11 @@ gltfLoader.load('/assets/models/duck/scene.gltf', (gltf) => {
     cube.add(duck);
 });
 
-camera.position.z = 10;
+camera.position.z = 18;
+camera.position.y = 2;
+camera.position.x = 0;
+camera.rotateY(-0.2);
+
 
 function animate() {
   requestAnimationFrame( animate );
