@@ -1,6 +1,7 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import House from './src/House';
 
@@ -61,8 +62,26 @@ for(let i = 0; i < 200; i++) {
 	let z = Math.random() * 100 * sign;
 	let s = Math.random() * 0.8;
 	addStar(x, y, z, s);
-  }
-  
+}
+//garden
+let garden;
+const gltfLoader = new GLTFLoader();
+gltfLoader.load('/assets/models/pond/scene.gltf', (gltf) => {
+garden = gltf.scene;
+	garden.position.set(4, -2.5, 5);
+	garden.rotateY(Math.PI / -1.5);
+	garden.scale.set(0.01, 0.01, 0.01);
+	scene.add(garden);
+});
+
+//duck
+let duck;
+gltfLoader.load('/assets/models/duck/scene.gltf', (gltf) => {
+  duck = gltf.scene;
+    duck.position.set(7, -3, 5);
+    scene.add(duck);
+});
+
 camera.position.z = 10;
 
 function animate() {

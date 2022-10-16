@@ -1,4 +1,6 @@
 import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
 
 export default class House{
     constructor(){
@@ -21,14 +23,16 @@ export default class House{
         this.group.add( side1 );
         side1.position.z = -2;
         
-        //cilinder
-        const cilinderGeometry = new THREE.CylinderGeometry( 8, 8, 0.5, 32 );
+        //floor
+        const cilinderGeometry = new THREE.CylinderGeometry( 10, 10, 0.8, 32 );
         const cilinderMaterial = new THREE.MeshStandardMaterial( {
-            color: 0x03C04A,
+            color: 0x74B72E,
         } );
         const cilinder = new THREE.Mesh( cilinderGeometry, cilinderMaterial );
         this.group.add( cilinder );
-        cilinder.position.y = -2.5;
+        cilinder.position.y = -2.8;
+        cilinder.position.z = 2;
+        cilinder.position.x = 2;
         
 
 
