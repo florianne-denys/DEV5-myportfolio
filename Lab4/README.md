@@ -4,4 +4,4 @@
 
 repository https://github.com/florianne-denys/DEV5-myportfolio/tree/main/Lab4/THREEJS
 
-codesandbox https://threejs-zeta-nine.vercel.app/
+vercel https://threejs-zeta-nine.vercel.app/
