@@ -12,10 +12,10 @@ export default class House{
         const side1Geometry = new THREE.BoxGeometry( 4, 5, 0.1 );
         const side1Material = new THREE.MeshStandardMaterial( {
             color: 0xffffff,
-            map: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Base_Color.jpg' ),
-            aoMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_ambientOcclusion.jpg' ),
-            normalMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Normal.jpg' ),
-            roughnessMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Roughness.jpg' ),
+            map: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Base_Color.jpg' ),
+            aoMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_ambientOcclusion.jpg' ),
+            normalMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Normal.jpg' ),
+            roughnessMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Roughness.jpg' ),
             side: THREE.DoubleSide
 
         } );
@@ -40,10 +40,10 @@ export default class House{
         const side2Geometry = new THREE.BoxGeometry( 0.1, 5, 4 );
         const side2Material = new THREE.MeshStandardMaterial( {
             color: 0xffffff,
-            map: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Base_Color.jpg' ),
-            aoMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_ambientOcclusion.jpg' ),
-            normalMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Normal.jpg' ),
-            roughnessMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Roughness.jpg' ),
+            map: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Base_Color.jpg' ),
+            aoMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_ambientOcclusion.jpg' ),
+            normalMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Normal.jpg' ),
+            roughnessMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Roughness.jpg' ),
             side: THREE.DoubleSide
         } );
         const side2 = new THREE.Mesh( side2Geometry, side2Material );
@@ -53,10 +53,10 @@ export default class House{
         const side3Geometry = new THREE.BoxGeometry( 0.1, 5, 4 );
         const side3Material = new THREE.MeshStandardMaterial( {
             color: 0xffffff,
-            map: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Base_Color.jpg' ),
-            aoMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_ambientOcclusion.jpg' ),
-            normalMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Normal.jpg' ),
-            roughnessMap: new THREE.TextureLoader().load( './public/assets/textures/Terracotta_Tiles_002_Roughness.jpg' ),
+            map: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Base_Color.jpg' ),
+            aoMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_ambientOcclusion.jpg' ),
+            normalMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Normal.jpg' ),
+            roughnessMap: new THREE.TextureLoader().load( '/assets/textures/Terracotta_Tiles_002_Roughness.jpg' ),
             side: THREE.DoubleSide
         } );
         const side3 = new THREE.Mesh( side3Geometry, side3Material );
@@ -67,7 +67,7 @@ export default class House{
         const roof1Geometry = new THREE.BoxGeometry( 0.1, 4.5, 4 );
         const roof1Material = new THREE.MeshLambertMaterial( { 
             color: 0x808080,
-            map: new THREE.TextureLoader().load( './public/assets/textures/roof.webp' ),
+            map: new THREE.TextureLoader().load( '/assets/textures/roof.webp' ),
         } );
         const roof1 = new THREE.Mesh( roof1Geometry, roof1Material );
         this.group.add( roof1 );
@@ -78,7 +78,7 @@ export default class House{
         const roof2Geometry = new THREE.BoxGeometry( 0.1, 4.5, 4 );
         const roof2Material = new THREE.MeshLambertMaterial( { 
             color: 0x808080,
-            map: new THREE.TextureLoader().load( './public/assets/textures/roof.webp' )
+            map: new THREE.TextureLoader().load( '/assets/textures/roof.webp' )
          } );
         const roof2 = new THREE.Mesh( roof2Geometry, roof2Material );
         this.group.add( roof2 );
