@@ -35,7 +35,7 @@ scene.add(house.group);
 const planeGeometry = new THREE.PlaneGeometry( 2.3, 2.5 );
 const planeMaterial = new THREE.MeshStandardMaterial( { 
 	color: 0xffffff,
-	map: new THREE.TextureLoader().load( './public/assets/textures/me.jpg' ),
+	map: new THREE.TextureLoader().load( '/assets/textures/me.jpg' ),
  } );
 const plane = new THREE.Mesh( planeGeometry, planeMaterial );
 plane.position.set(0, 0, -1.8);
@@ -45,7 +45,7 @@ scene.add( plane );
 const sphereGeometry = new THREE.SphereGeometry( 100, 32, 32 );
 const sphereMaterial = new THREE.MeshLambertMaterial( {
 	color: 0x808080,
-	map: new THREE.TextureLoader().load( './public/assets/textures/sky.jpeg' ),
+	map: new THREE.TextureLoader().load( '/assets/textures/sky.jpeg' ),
 	side: THREE.BackSide,
 } );
 const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
