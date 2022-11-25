@@ -17,4 +17,4 @@ My repository for DEV5, including all my lab projects
 * 
 
 ## Week 6 - Vue.js
-* Lab 4: https://github.com/florianne-denys/LAB6
+* Lab 6: https://github.com/florianne-denys/LAB6
