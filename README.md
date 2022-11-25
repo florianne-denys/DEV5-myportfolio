@@ -12,3 +12,9 @@ My repository for DEV5, including all my lab projects
 
 ## Week 4 - Three.js
 * Lab 4: https://github.com/florianne-denys/DEV5-myportfolio/tree/main/Lab4
+
+## Week 5 - 
+* 
+
+## Week 6 - Vue.js
+* Lab 4: https://github.com/florianne-denys/LAB6
